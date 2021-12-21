@@ -67,7 +67,11 @@ class _PlayButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton.icon(
-      style: ButtonStyle(),
+      style: TextButton.styleFrom(
+        backgroundColor: Colors.white,
+        primary: Colors.black,
+        padding: EdgeInsets.fromLTRB(15.0, 5.0, 20.0, 5.0),
+      ),
       // padding: const EdgeInsets.fromLTRB(15.0, 5.0, 20.0, 5.0),
       onPressed: () => print('Play'),
       icon: const Icon(
