@@ -3,11 +3,13 @@ import 'package:flutter_netflix_responsive_ui/widgets/widgets.dart';
 import '../data/data.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key key}) : super(key: key);
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   ScrollController _scrollController;
   double _scrollOffset = 0.0;
 
@@ -56,8 +58,33 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.only(top: 20.0),
             sliver: SliverToBoxAdapter(
               child: Previews(
+                key: PageStorageKey('previews'),
                 title: 'Previews',
                 contentList: previews,
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: ContentList(
+              title: 'My List',
+              contentList: myList,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: ContentList(
+              key: PageStorageKey('originals'),
+              title: 'Netflix Originals',
+              contentList: originals,
+              isOriginals: true,
+            ),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.only(bottom: 20.0),
+            sliver: SliverToBoxAdapter(
+              child: ContentList(
+                key: PageStorageKey('trending'),
+                title: 'Trending',
+                contentList: trending,
               ),
             ),
           ),
