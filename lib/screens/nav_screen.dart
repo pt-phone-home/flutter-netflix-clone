@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_netflix_responsive_ui/widgets/responsive.dart';
 
 import 'home_screen.dart';
 
@@ -30,7 +31,8 @@ class _NavScreenState extends State<NavScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screens[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: !Responsive.isDesktop(context) ?
+      BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.black,
         items: _icons
@@ -54,7 +56,7 @@ class _NavScreenState extends State<NavScreen> {
         unselectedItemColor: Colors.grey,
         unselectedFontSize: 11.0,
         onTap: (index) => setState(() => _currentIndex = index),
-      ),
+      ) : null,
     );
   }
 }
